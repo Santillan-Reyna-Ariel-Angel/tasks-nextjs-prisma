@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
 
 export const GET = () => {
-  return NextResponse.json('Creando tareasss');
+  return NextResponse.json('Creando tareas...');
 };
