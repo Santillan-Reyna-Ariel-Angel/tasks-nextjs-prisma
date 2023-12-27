@@ -9,3 +9,11 @@ datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
 }
+
+
+model Tasks{
+  id Int @id @default(autoincrement())
+  title String
+  description String? // El signo "?" significa que no es requerido (opcional)
+  createdAt DateTime @default(now())
+}
