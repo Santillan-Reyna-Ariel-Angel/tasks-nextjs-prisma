@@ -11,6 +11,7 @@ export const POST = async (request, { params }) => {
   const response = await request.json(); //Recordar que en request se encuentra el body de la petición
   console.log('response: ', response);
 
+  // * De esta manera creamos un registro en la tabla "Tasks" que declaramos en schema.prisma
   const taskCreated = await prisma.tasks.create({
     data: {
       title: response.title,
