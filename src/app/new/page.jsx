@@ -85,9 +85,31 @@ const NewPage = ({ params }) => {
             setTask({ ...task, description: event.target.value })
           }
         ></textarea>
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-          Crear tarea
-        </button>
+
+        <div className="flex justify-between">
+          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            Crear
+          </button>
+
+          {params.id && (
+            <button
+              className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+              type="button"
+              onClick={async () => {
+                const response = await fetch(`/api/tasks/${params.id}`, {
+                  method: 'DELETE',
+                });
+                const data = await response.json();
+                console.log('DELETE:', data);
+
+                router.refresh();
+                router.push('/');
+              }}
+            >
+              Eliminar
+            </button>
+          )}
+        </div>
       </form>
     </div>
   );
